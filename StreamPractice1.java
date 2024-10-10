@@ -46,7 +46,15 @@ public class StreamPractice1 {
         /*myList3.stream()
                 .findFirst()
                 .ifPresent(System.out::println);*/
+        
+        // https://www.javaguides.net/2024/02/java-8-program-to-find-frequency-of-each-character-in-given-string.html
+        String strCount = "i love java";
+        Map<Character, Long> mapStr = strCount.chars()
+                .filter(c-> c != ' ')
+                .mapToObj(c->Character.valueOf((char) c))
+                .collect(Collectors.groupingBy(Function.identity(), HashMap::new, Collectors.counting()));
 
+        
         // find the first repeated character in it using Stream
         String input = "Java articles are Awesome";
         Character result = input.chars().mapToObj(c-> Character.toLowerCase(Character.valueOf((char) c)))
